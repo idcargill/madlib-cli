@@ -1,3 +1,5 @@
 poetry.lock
 playground*
 todo.txt
+.pytest_cache
+__pycache__*
