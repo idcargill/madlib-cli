@@ -3,3 +3,5 @@ playground*
 todo.txt
 .pytest_cache
 __pycache__*
+
+saved_madlibs/*

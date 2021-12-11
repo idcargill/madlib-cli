@@ -1,5 +1,6 @@
 import pytest
-from madlib_cli.madlib import read_template, parse_template, merge
+import os
+from madlib_cli.madlib import read_template, parse_template, merge, save_to_file
 from madlib_cli import __version__
 
 def test_version():
@@ -12,7 +13,7 @@ def test_read_template_returns_stripped_string():
     assert actual == expected
 
 
-@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_parse_template():
     actual_stripped, actual_parts = parse_template(
         "It was a {Adjective} and {Adjective} {Noun}."
@@ -24,16 +25,24 @@ def test_parse_template():
     assert actual_parts == expected_parts
 
 
-@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_merge():
     actual = merge("It was a {} and {} {}.", ("dark", "stormy", "night"))
     expected = "It was a dark and stormy night."
     assert actual == expected
 
 
-@pytest.mark.skip("pending")
+# @pytest.mark.skip("pending")
 def test_read_template_raises_exception_with_bad_path():
 
     with pytest.raises(FileNotFoundError):
         path = "missing.txt"
         read_template(path)
+
+
+def test_file_written_to_file():
+    save_to_file('test', 'test_file_creation')
+    saved_files = os.listdir('./saved_madlibs/')
+    assert 'test_file_creation.txt' in saved_files
+    os.remove('saved_madlibs/test_file_creation.txt')
+    
