@@ -1,7 +1,7 @@
+from madlib_cli import __version__
 import pytest
 import os
-from madlib_cli.madlib import read_template, parse_template, merge, save_to_file
-from madlib_cli import __version__
+from madlib_cli.madlib_cli import read_template, parse_template, merge, save_to_file
 
 def test_version():
     assert __version__ == '0.1.0'
